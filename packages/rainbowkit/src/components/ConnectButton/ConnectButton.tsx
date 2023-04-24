@@ -22,6 +22,7 @@ export interface ConnectButtonProps {
   showBalance?: ResponsiveValue<boolean>;
   chainStatus?: ResponsiveValue<ChainStatus>;
   label?: string;
+  displayName?: string;
 }
 
 const defaultProps = {
@@ -36,6 +37,7 @@ export function ConnectButton({
   chainStatus = defaultProps.chainStatus,
   label = defaultProps.label,
   showBalance = defaultProps.showBalance,
+  displayName,
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
@@ -237,7 +239,7 @@ export function ConnectButton({
                                 : 'none'
                             )}
                           >
-                            {account.displayName}
+                            {displayName ?? account.displayName}
                           </Box>
                           <DropdownIcon />
                         </Box>
